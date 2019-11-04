@@ -6,28 +6,74 @@
         <title>TP2</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
-
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
+        <link rel="stylesheet" href="tp2.css"/>
+        <script src="formulaire.js"></script>
         
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="js/main.js"></script>-->
     </head>
-    <body>        
-        <h1>tp2</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
+    <body>       
+        <div class="container">
+       <h2>Saisie D'une Fiche Personne</h2>
+     
+       <form action=""  onsubmit="validation(); return false">
+
+        <div class="field">
+            <label class="label" for='nom'>Nom</label>
+            <div class="control">
+              <input class="input" type="text" id="nom"   required >
+            </div>
+          </div>
+          <div class="field" id="error1"></div>
+
+          <div class="field">
+            <label class="label" for='prenom'>Prénom</label>
+            <div class="control">
+              <input class="input" type="text" id="prenom" >
+            </div>
+          </div>
+          <div class="field" id="error2"></div>
+
+          <div class="field">
+            <label class="label" for='date_naissance'>Date de naissance</label>
+            <div class="control">
+              <input class="input" type="date" placeholder="JJ/MM/AAAA" id="date_naissance" >
+            </div>
+          </div>
+          <div class="field" id="error3"></div>
+
+          
+          <div class="field">
+              <label class="label" for='adresse'>Adresse</label>
+              <div class="control">
+                <input class="input" type="text" id="adresse" >
+              </div>  
+            </div>
+            <div class="field" id="error4"></div>
+
+          <div class="field">
+            <label class="label" for='mail'>Mail</label>
+            <div class="control">
+              <input class="input" type="email" id="mail"  placeholder="exemple@gmail.com"  required >  <!-- required champs obligatoire-->
+            </div>  
+          </div>
+          <div class="field" id="error5"></div>
+
+          <!--Button-->
+          
+          <div class="field">
+            <br>
+            <input type="submit" value="Submit">
+          </div>
+          
+        </form>
+       
+      </div> 
+
+       <div id="resultat"> 
+        <p class="txt" id="txt"></p>
+       </div>
+
+          <!--message d'erreur-->
+            <!--message de validation-->
+
     </body>
 </html>
