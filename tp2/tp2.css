@@ -29,6 +29,7 @@
   }
 
   input[type=submit] {
+  
     background-color: rgba(83, 83, 182, 0.952);
     color: white;
     padding: 12px 20px;
