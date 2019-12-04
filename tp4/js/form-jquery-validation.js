@@ -32,11 +32,11 @@ $(document).ready(function () {
 
                 if ($("#name").val().length == 0 || $("#firstname").val().length == 0 || $("#datepicker").val().length == 0 ||
                     $("#adresse").val().length == 0 || $("#mail").val().length == 0) {
-                    $("#submit").html('<div  style="background-color:#00ff89; width: 350px; height: 50px;">' + '<p style="color:red; text-align:center; padding-top:10px;">Veuillez remplir tout les champs !!</p\>' + '</div\>');
+                    $("#submit").html('<div   width: 350px; height: 50px;">' + '<p style="color:red; text-align:center; padding-top:10px;"><strong>Veuillez remplir tout les champs !!</strong\></p\>' + '</div\>');
 
                 }
                 else if ($("input").val().length != 0) {
-                    $("#submit").html('<div  style=" background-color:#f8f9fa; width: 350px; height: 50px;">' + '<p style="color:green; text-align:center; padding-top:10px;">' + '<strong> Bravo !!!</strong\>' + 'Le formulaire est bien sauvegardé</p\>' + '</div\>');
+                    $("#submit").html('<div   width: 350px; height: 50px;">' + '<p style="color:green; text-align:center; padding-top:10px;">' + '<strong> Bravo !!!</strong\>' + 'Le formulaire est bien sauvegardé</p\>' + '</div\>');
                     document.innerHTML = "";
                     contactStore.add(name, firstname, datepicker, adresse, mail);
                     contactList = contactStore.getList();
