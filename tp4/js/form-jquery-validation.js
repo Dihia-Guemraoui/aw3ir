@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+       
     //button de localisation et fair un appel a  la fonction get localisation
     $("#gps").on("click", function () {
         getLocation();
@@ -18,55 +19,41 @@ $(document).ready(function () {
         $("#prenom").text(nbr_c_firstname += 1);
 
     });
-    $("#submit").on("click", function () {
-        var
-            name = document.querySelector("#name").value,
-            firstname = document.querySelector("#firstname").value,
-            birth = document.querySelector("#birth").value,
-            adresse = document.querySelector("#adresse").value,
-            mail = document.querySelector("#mail").value;
-
-        if (validateItem("name") && validateItem("firstname") && validateItem("birth") &&
-            validateItem("adresse") && validateItem("mail")) {
-            d1.innerHTML = "";
-            contactStore.add(name, firstname, birth, adresse, mail);
-            contactList = contactStore.getList();
-            document.querySelector("table tbody").innerHTML = "";
-
-            //Pour faire une boucle sur une liste JSON:
-            for (var index in contactList) {
-                document.querySelector("table tbody").innerHTML = document.querySelector("table tbody").innerHTML +
-                    '<td>' + contactList[index].name +
-                    '</td><td>' + contactList[index].firstname +
-                    '</td><td>' + contactList[index].birth +
-                    '</td><td>' + contactList[index].adresse +
-                    '</td><td>' + contactList[index].mail + '</td>';
-
-            }
-        }
-        else {
-            d1 = document.querySelector("#verf");
-            d1.innerHTML = "";
-            d1.style.backgroundColor = "#e9ebee"
-            d1.style.border = '1px black';
-            d1.style.padding = '5px';
-            d1.innerHTML = "Faut remplir tous les champs ! ";
-        }
-
-
-
-
-
-    });
 });
-function validateItem(_id) {
-    var el = document.querySelector("#" + _id);
+    $(document).ready(function () {
+        var validate = (function () {
+            $("#submit").click(function () {
+                var
+                    name = $("#name").val(),
+                    firstname = $("#firstname").val(),
+                    datepicker = $("#datepicker").val(),
+                    adresse = $("#adresse").val(),
+                    mail = $("#mail").val();
 
-    if (el.value.length < 5) {
-        return false;
-    } else {
+                if ($("#name").val().length == 0 || $("#firstname").val().length == 0 || $("#datepicker").val().length == 0 ||
+                    $("#adresse").val().length == 0 || $("#mail").val().length == 0) {
+                    $("#submit").html('<div  style="background-color:#00ff89; width: 350px; height: 50px;">' + '<p style="color:red; text-align:center; padding-top:10px;">Veuillez remplir tout les champs !!</p\>' + '</div\>');
 
-        return true;
-    }
+                }
+                else if ($("input").val().length != 0) {
+                    $("#submit").html('<div  style=" background-color:#f8f9fa; width: 350px; height: 50px;">' + '<p style="color:green; text-align:center; padding-top:10px;">' + '<strong> Bravo !!!</strong\>' + 'Le formulaire est bien sauvegardé</p\>' + '</div\>');
+                    document.innerHTML = "";
+                    contactStore.add(name, firstname, datepicker, adresse, mail);
+                    contactList = contactStore.getList();
+                    document.querySelector("table tbody").innerHTML = "";
+                    for (var i in contactList) {
+                        document.querySelector("table tbody").innerHTML = document.querySelector("table tbody").innerHTML +
+                            '<td>' + contactList[i].name + '</td>' +
+                            '<td>' + contactList[i].firstname + '</td>' +
+                            '<td>' + $("#datepicker").val() + '</td>' +
+                            '<td>' + $("#adresse").val() + '</td>' +
+                            '<td style="color:blue;">' + contactList[i].mail + '</td>';
 
-}
+
+                    }
+
+                }
+            });
+
+        })();
+    });
