@@ -76,35 +76,36 @@ window.onload = function () {
     
             },
             remove: function (_city) {      
-               
-                    // on utilise 'filter' pour retourne une liste avec tous les items ayant un nom différent de _city.name
-                    this.cityList = this.cityList.filter(item => item.name != _city.name);    
+                // A compléter dans la suite du TP   
+                this.cityList = this.cityList.filter(item => item.name != _city.name);       
             }, 
             meteo: function (_city) {  
-                          
-             // appel AJAX avec fetch
-    fetch('https://api.openweathermap.org/data/2.5/weather?q='+_city.name+'&units=metric&lang=fr&apikey=VOTRE_APIKEY')
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(json) {
-        app.cityWeatherLoading = false;
+                // A compléter dans la suite du TP    
+                this.cityWeatherLoading = true;
 
-        // test du code retour
-        // 200 = OK
-        // 404 = city not found 
-        if(json.cod === 200){
-            // on met la réponse du webservice dans la variable cityWeather
-            app.cityWeather = json;
-            app.message = null;
-        }else{
-            app.cityWeather = null;
-            app.message = 'Météo introuvable pour ' + _city.name 
-                            + ' (' + json.message+ ')';
-        }  
-        
-    });        
-}
-}
-    });
+    // appel AJAX avec fetch
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+_city.name+'&units=metric&lang=fr&apikey=c70169faa266d720f81ee536146de8ec')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(json) {
+            app.cityWeatherLoading = false;
+
+            // test du code retour
+            // 200 = OK
+            // 404 = city not found 
+            if(json.cod === 200){
+                // on met la réponse du webservice dans la variable cityWeather
+                app.cityWeather = json;
+                app.message = null;
+            }
+            else{
+                app.cityWeather = null;
+                app.message = 'Météo introuvable pour ' + _city.name 
+                                + ' (' + json.message+ ')';
+            }        
+        })       
+    }       
+    }     
+})
 }
